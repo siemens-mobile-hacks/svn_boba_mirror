@@ -1,6 +1,6 @@
 /*
     SieNatJabber Project
-    Константы, множества протокола XMPP
+    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ XMPP
 
 */
 #ifndef _JABBER_H_
@@ -41,6 +41,7 @@
 #define LG_JABBER_ERROR_REMOTE_SERVER_TIMEOUT	"Remote server timeout"
 
 //MUC CODE
+#define MUCST_MY_PRESENCE 110
 #define MUCST_BANNED  301
 #define MUCST_CHNICK  303
 #define MUCST_KICKED  307

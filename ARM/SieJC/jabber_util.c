@@ -1980,6 +1980,7 @@ static char r[MAX_STATUS_LEN];       // Статик, чтобы не убило её при завершении
          case MUCST_KICKED_MEMB_ONLY: sprintf(r, LG_MUCST_R_KICK_MEMB_ONLY, nick); break; // Сообщение о кике из мембер-онли румы
          case MUCST_CHNICK: sprintf(r, LG_MUCST_R_CHNICK, nick,  XML_Get_Attr_Value("nick", item->attr)); break; // Сообщение о смене ника
          case MUCST_MUCCREATED: sprintf(r, LG_MUCST_MUCCREATED, nick); break; // Сообщение о бане
+         case MUCST_MY_PRESENCE: break; // С этим нечего делать
          default: sprintf(r,"%s - [unknow action(%s)]",nick, st_code);
         }
         XMLNode* item = XML_Get_Child_Node_By_Name(x_node,"item");
