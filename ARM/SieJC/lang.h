@@ -125,7 +125,7 @@
 #define LG_QUERYLAST        "Бездействие"
 #define LG_SUBSCR           "Подписка"
 #define LG_EDIT             "Изменить"
-#define LG_MUCCLEAR         "Очистить сообщения"
+#define LG_CHATLOGCLEAR     "Очистить сообщения"
 #define LG_SUBSCRIBE        "Запросить"
 #define LG_SUBSCRIBED       "Разрешить"
 #define LG_UNSUBSCRIBED     "Отклонить"

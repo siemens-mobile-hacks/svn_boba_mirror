@@ -27,7 +27,7 @@ extern void ConstructReasonDlg(char *name, char *jid, MUC_ADMIN muccmd);
 #define MI_LASTACTIV_QUERY  9
 #define MI_SUBSCRIBES_MENU  10
 #define MI_CHANGECONTACT_VERSION  11
-#define MI_CONF_CLEAR       12
+#define MI_CHATLOG_CLEAR       12
 char Menu_Contents[MAX_ITEMS-1];
 int cmS_ICONS[MAX_ITEMS+1];
 
@@ -290,7 +290,7 @@ int contact_menu_onkey(void *data, GUI_MSG *msg)
         Send_Leave_Conference(room->JID, NULL);
         break;
       }
-    case MI_CONF_CLEAR:
+    case MI_CHATLOG_CLEAR:
       {
         TRESOURCE *Reso_Ex = CList_GetActiveContact();
         KillMsgList(Reso_Ex->log);
@@ -419,9 +419,9 @@ void contact_menu_iconhndl(void *data, int curitem, void *unk)
       strcpy(test_str,LG_ABANDON);
       break;
     }
-  case MI_CONF_CLEAR:
+  case MI_CHATLOG_CLEAR:
     {
-      strcpy(test_str,LG_MUCCLEAR);
+      strcpy(test_str,LG_CHATLOGCLEAR);
       break;
     }
 
@@ -577,7 +577,7 @@ void Init_Icon_array()
   cmS_ICONS[MI_MUC_ADMIN]=(int)ICON_MUC_ADMIN;
   cmS_ICONS[MI_SUBSCRIBES_MENU]=(int)  ICON_SUBSCRIBE_MENU;
   cmS_ICONS[MI_CHANGECONTACT_VERSION]=(int)  ICON_SUBSCRIBE_MENU;
-  cmS_ICONS[MI_CONF_CLEAR]=(int)ICON_SUBSCRIBE_MENU;
+  cmS_ICONS[MI_CHATLOG_CLEAR]=(int)ICON_SUBSCRIBE_MENU;
 }
 
 void Disp_Contact_Menu()
@@ -593,8 +593,9 @@ void Disp_Contact_Menu()
     if(Act_contact->status!=PRESENCE_OFFLINE) Menu_Contents[n_items++]=MI_CONF_LEAVE;
     Menu_Contents[n_items++]=MI_HISTORY_OPEN;
     Menu_Contents[n_items++]=MI_DISCO_QUERY;
-    if(Act_contact->total_msg_count) Menu_Contents[n_items++]=MI_CONF_CLEAR;
   }
+
+  if(Act_contact->total_msg_count) Menu_Contents[n_items++]=MI_CHATLOG_CLEAR;
 
   if((Act_contact->entry_type==T_CONF_NODE)&&(Act_contact->status!=PRESENCE_OFFLINE))
   {
