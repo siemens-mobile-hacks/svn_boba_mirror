@@ -43,10 +43,10 @@ extern const int EXT_VERSION_INFO;
 
 MUC_ITEM *muctop = NULL;
 
-TTime intimes; //для idle
+TTime intimes; //РґР»СЏ idle
 TDate indates;
 
-unsigned int m_num=0; // ид сообщения, любого!
+unsigned int m_num=0; // РёРґ СЃРѕРѕР±С‰РµРЅРёСЏ, Р»СЋР±РѕРіРѕ!
 
 extern JABBER_STATE Jabber_state;
 const char* PRESENCES[PRES_COUNT] = {"online",
@@ -73,7 +73,7 @@ const char* JABBER_ROLS[] = {"none", "visitor", "participant", "moderator"};
 ONLINEINFO OnlineInfo = {0,0,NULL};
 
 /**
-  * Функция для отправки настроения
+  * Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕС‚РїСЂР°РІРєРё РЅР°СЃС‚СЂРѕРµРЅРёСЏ
  **/
 // Context: HELPER
 void Send_Mood(char *mood, char *text)
@@ -111,7 +111,7 @@ void Send_Mood(char *mood, char *text)
 }
 
 /*
-  Посылка стандартного Jabber Iq
+  РџРѕСЃС‹Р»РєР° СЃС‚Р°РЅРґР°СЂС‚РЅРѕРіРѕ Jabber Iq
 */
 void SendIq(char* to, char* type, char* id, char* xmlns, XMLNode* payload)
 {
@@ -145,7 +145,7 @@ void SendIq(char* to, char* type, char* id, char* xmlns, XMLNode* payload)
 }
 
 /*
-  Посылка стандартного Jabber message
+  РџРѕСЃС‹Р»РєР° СЃС‚Р°РЅРґР°СЂС‚РЅРѕРіРѕ Jabber message
 */
 void Send_Message(char* to, char* type, char* id, XMLNode* payload)
 {
@@ -176,7 +176,7 @@ void Send_Message(char* to, char* type, char* id, XMLNode* payload)
 }
 
 /*
-  Посылка стандартного Jabber presence
+  РџРѕСЃС‹Р»РєР° СЃС‚Р°РЅРґР°СЂС‚РЅРѕРіРѕ Jabber presence
 */
 void SendPresence(char* to, char* type, char* id, XMLNode* payload)
 {
@@ -201,8 +201,8 @@ void SendPresence(char* to, char* type, char* id, XMLNode* payload)
   DestroyTree(presence);
 }
 /*
-  Послать приветствие, на него сервер высылает ответный stream.
-  После этого можно общаться с сервером
+  РџРѕСЃР»Р°С‚СЊ РїСЂРёРІРµС‚СЃС‚РІРёРµ, РЅР° РЅРµРіРѕ СЃРµСЂРІРµСЂ РІС‹СЃС‹Р»Р°РµС‚ РѕС‚РІРµС‚РЅС‹Р№ stream.
+  РџРѕСЃР»Рµ СЌС‚РѕРіРѕ РјРѕР¶РЅРѕ РѕР±С‰Р°С‚СЊСЃСЏ СЃ СЃРµСЂРІРµСЂРѕРј
 */
 // Context:HELPER
 void Send_Welcome_Packet()
@@ -228,7 +228,7 @@ void Send_Welcome_Packet()
 #endif
 }
 /*
-  Послать дисконнект
+  РџРѕСЃР»Р°С‚СЊ РґРёСЃРєРѕРЅРЅРµРєС‚
 */
 // Context:HELPER
 void Send_Disconnect()
@@ -241,7 +241,7 @@ void Send_Disconnect()
 #endif
 }
 
-// Константы Iq-запросов
+// РљРѕРЅСЃС‚Р°РЅС‚С‹ Iq-Р·Р°РїСЂРѕСЃРѕРІ
 char auth_id[] = "SieJC_auth_req";
 char rost_id[] = "SieJC_rost_req";
 char vreq_id[] = "SieJC_vers_req";
@@ -250,8 +250,8 @@ char treq_id[] = "SieJC_time_req";
 char vcreq_id[] = "SieJC_vcard_req";
 char lastact_id[] = "SieJC_lastact_req";
 /*
-  Авторизация на Jabber-сервере
-  Самая тупая, без извращений.
+  РђРІС‚РѕСЂРёР·Р°С†РёСЏ РЅР° Jabber-СЃРµСЂРІРµСЂРµ
+  РЎР°РјР°СЏ С‚СѓРїР°СЏ, Р±РµР· РёР·РІСЂР°С‰РµРЅРёР№.
 */
 //Context: HELPER
 void Send_Auth()
@@ -309,7 +309,7 @@ void _sendversionrequest(char *dest_jid)
   mfree(dest_jid);
 }
 
-// Послать запрос о версии пользователю с указанным JID
+// РџРѕСЃР»Р°С‚СЊ Р·Р°РїСЂРѕСЃ Рѕ РІРµСЂСЃРёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј JID
 void Send_Version_Request(char *dest_jid)
 {
   char *to=malloc(128);
@@ -326,7 +326,7 @@ void _sendtimerequest(char *dest_jid)
   mfree(dest_jid);
 }
 
-// Послать запрос о локальном времени клиента пользователю с указанным JID
+// РџРѕСЃР»Р°С‚СЊ Р·Р°РїСЂРѕСЃ Рѕ Р»РѕРєР°Р»СЊРЅРѕРј РІСЂРµРјРµРЅРё РєР»РёРµРЅС‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј JID
 void Send_Time_Request(char *dest_jid)
 {
   char *to=malloc(128);
@@ -346,7 +346,7 @@ void _sendvcardrequest(char *to)
   mfree(to);
 }
 
-// Послать запрос о версии vcard
+// РџРѕСЃР»Р°С‚СЊ Р·Р°РїСЂРѕСЃ Рѕ РІРµСЂСЃРёРё vcard
 void Send_Vcard_Request(char *dest_jid)
 {
   char *to=malloc(128);
@@ -369,8 +369,8 @@ void Send_LastActivity_Request(char *dest_jid)
   SUBPROC((void*)_sendlastactivrequest,to);
 }
 
-// Сгенерировать ver= исходя из текущих возможностей клиента
-// Возвращаемую строку необходимо освобождать!
+// РЎРіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ ver= РёСЃС…РѕРґСЏ РёР· С‚РµРєСѓС‰РёС… РІРѕР·РјРѕР¶РЅРѕСЃС‚РµР№ РєР»РёРµРЅС‚Р°
+// Р’РѕР·РІСЂР°С‰Р°РµРјСѓСЋ СЃС‚СЂРѕРєСѓ РЅРµРѕР±С…РѕРґРёРјРѕ РѕСЃРІРѕР±РѕР¶РґР°С‚СЊ!
 char *Generate_Caps()
 {
   char answer[400];
@@ -414,8 +414,8 @@ char *Generate_Caps()
 }
 
 /*
-  Послать своё присутствие (в частности, после этого на нас вываливаются
-  присутствия остальных, а мы появляемся в ресурсах своего контакта)
+  РџРѕСЃР»Р°С‚СЊ СЃРІРѕС‘ РїСЂРёСЃСѓС‚СЃС‚РІРёРµ (РІ С‡Р°СЃС‚РЅРѕСЃС‚Рё, РїРѕСЃР»Рµ СЌС‚РѕРіРѕ РЅР° РЅР°СЃ РІС‹РІР°Р»РёРІР°СЋС‚СЃСЏ
+  РїСЂРёСЃСѓС‚СЃС‚РІРёСЏ РѕСЃС‚Р°Р»СЊРЅС‹С…, Р° РјС‹ РїРѕСЏРІР»СЏРµРјСЃСЏ РІ СЂРµСЃСѓСЂСЃР°С… СЃРІРѕРµРіРѕ РєРѕРЅС‚Р°РєС‚Р°)
 
 */
 // Context: HELPER
@@ -425,7 +425,7 @@ void Send_Presence(PRESENCE_INFO *pr_info)
   extern const char percent_d[];
   My_Presence = pr_info->status;
   //<c xmlns='http://jabber.org/protocol/caps' node='VERSION_NAME' ver='VERSION_VERS __GIT_REVISION__' />
-  // Генерируем капс исходя из включённых фич
+  // Р“РµРЅРµСЂРёСЂСѓРµРј РєР°РїСЃ РёСЃС…РѕРґСЏ РёР· РІРєР»СЋС‡С‘РЅРЅС‹С… С„РёС‡
   char *caps_str = Generate_Caps();
   char *tmp_str = malloc(256);
   char* presence = malloc(1024);
@@ -442,7 +442,7 @@ void Send_Presence(PRESENCE_INFO *pr_info)
   
   if(pr_info->status!=PRESENCE_OFFLINE)
   {
-  //обновляем онлайнинфо только если не выбран офлайн статус, чтоб при выходе в конфиг записать
+  //РѕР±РЅРѕРІР»СЏРµРј РѕРЅР»Р°Р№РЅРёРЅС„Рѕ С‚РѕР»СЊРєРѕ РµСЃР»Рё РЅРµ РІС‹Р±СЂР°РЅ РѕС„Р»Р°Р№РЅ СЃС‚Р°С‚СѓСЃ, С‡С‚РѕР± РїСЂРё РІС‹С…РѕРґРµ РІ РєРѕРЅС„РёРі Р·Р°РїРёСЃР°С‚СЊ
   OnlineInfo.status = pr_info->status;
   OnlineInfo.priority = pr_info->priority;
   if(OnlineInfo.txt)mfree(OnlineInfo.txt);
@@ -523,7 +523,7 @@ void Send_ShortPresence(char *to,char type)
 }
 
 /*
-  Послать запрос ростера
+  РџРѕСЃР»Р°С‚СЊ Р·Р°РїСЂРѕСЃ СЂРѕСЃС‚РµСЂР°
 */
 // Context: HELPER
 void Send_Roster_Query()
@@ -678,14 +678,14 @@ void Report_VersionInfo(char* id, char *to)
   sprintf(answer, "%s-%s (%s)", VERSION_VERS, __GIT_REVISION__, CMP_DATE);
   xml_version = XML_CreateNode(version_t, answer);
   
-  // Не будем издеваться над Костиным сервером)
+  // РќРµ Р±СѓРґРµРј РёР·РґРµРІР°С‚СЊСЃСЏ РЅР°Рґ РљРѕСЃС‚РёРЅС‹Рј СЃРµСЂРІРµСЂРѕРј)
   #pragma swi_number=0x41
   __swi __arm char GetProvider(WSHDR* name, int unk_1);
 
   #pragma swi_number=0x2C2
   __swi __arm int GetSubprovider(WSHDR* ws);
   
-  // Аццкий процент не экранируется
+  // РђС†С†РєРёР№ РїСЂРѕС†РµРЅС‚ РЅРµ СЌРєСЂР°РЅРёСЂСѓРµС‚СЃСЏ
   #define percent "%"
   
   if(EXT_VERSION_INFO)
@@ -938,13 +938,13 @@ void _enterconference(MUC_ENTER_PARAM *param)
 }
 
 
-// Входит в конференцию
-// Все имена в UTF-8 :)
+// Р’С…РѕРґРёС‚ РІ РєРѕРЅС„РµСЂРµРЅС†РёСЋ
+// Р’СЃРµ РёРјРµРЅР° РІ UTF-8 :)
 void Enter_Conference(char *room, char *roomnick, char *roompass, char N_messages)
 {
 
-  // Смотрим, есть ли такая конфа в списке конференций
-  // Если есть, тогда мы должны просто поменять ник в ней
+  // РЎРјРѕС‚СЂРёРј, РµСЃС‚СЊ Р»Рё С‚Р°РєР°СЏ РєРѕРЅС„Р° РІ СЃРїРёСЃРєРµ РєРѕРЅС„РµСЂРµРЅС†РёР№
+  // Р•СЃР»Рё РµСЃС‚СЊ, С‚РѕРіРґР° РјС‹ РґРѕР»Р¶РЅС‹ РїСЂРѕСЃС‚Рѕ РїРѕРјРµРЅСЏС‚СЊ РЅРёРє РІ РЅРµР№
   char IsAlreadyInList = 0;
   MUC_ITEM* m_ex = muctop;
   if(muctop)
@@ -963,21 +963,21 @@ void Enter_Conference(char *room, char *roomnick, char *roompass, char N_message
   CLIST* Conference = CList_FindContactByJID(room);
   if(!IsAlreadyInList)
   {
-    // Добавляем контакт конференции в ростер
+    // Р”РѕР±Р°РІР»СЏРµРј РєРѕРЅС‚Р°РєС‚ РєРѕРЅС„РµСЂРµРЅС†РёРё РІ СЂРѕСЃС‚РµСЂ
     if(!Conference)
     {
       CList_AddContact(room,room, SUB_BOTH, 0, 129);
     }
-//    else  // Конфа могла остаться от предыдущего входа/выхода
+//    else  // РљРѕРЅС„Р° РјРѕРіР»Р° РѕСЃС‚Р°С‚СЊСЃСЏ РѕС‚ РїСЂРµРґС‹РґСѓС‰РµРіРѕ РІС…РѕРґР°/РІС‹С…РѕРґР°
 //    {
 //      Conference->res_list->status=PRESENCE_ONLINE;
 //    }
   }
   if((Conference)&&(m_ex))
     if(Conference->res_list)
-      if((Conference->res_list->status==PRESENCE_ONLINE)&&(!strcmp(Get_Resource_Name_By_FullJID(m_ex->conf_jid),roomnick))) return; //Уже там, и нечего перезаходить
+      if((Conference->res_list->status==PRESENCE_ONLINE)&&(!strcmp(Get_Resource_Name_By_FullJID(m_ex->conf_jid),roomnick))) return; //РЈР¶Рµ С‚Р°Рј, Рё РЅРµС‡РµРіРѕ РїРµСЂРµР·Р°С…РѕРґРёС‚СЊ
 
-  // Готовим структуру для передачи в HELPER
+  // Р“РѕС‚РѕРІРёРј СЃС‚СЂСѓРєС‚СѓСЂСѓ РґР»СЏ РїРµСЂРµРґР°С‡Рё РІ HELPER
   MUC_ENTER_PARAM* par = malloc(sizeof(MUC_ENTER_PARAM));
 //  par->room_nick =ANSI2UTF8(roomnick, strlen(roomnick)*2);
 //  par->room_name = ANSI2UTF8(room, strlen(room)*2);
@@ -997,12 +997,12 @@ void Enter_Conference(char *room, char *roomnick, char *roompass, char N_message
   {
     par->mess_num=N_messages;
   }
-  else par->mess_num=0;   // Нах еще раз запрашивать историю
+  else par->mess_num=0;   // РќР°С… РµС‰Рµ СЂР°Р· Р·Р°РїСЂР°С€РёРІР°С‚СЊ РёСЃС‚РѕСЂРёСЋ
   SUBPROC((void*)_enterconference, par);
 
   if(!IsAlreadyInList)
   {
-    // Регистрируем конференцию в списке конференций
+    // Р РµРіРёСЃС‚СЂРёСЂСѓРµРј РєРѕРЅС„РµСЂРµРЅС†РёСЋ РІ СЃРїРёСЃРєРµ РєРѕРЅС„РµСЂРµРЅС†РёР№
     MUC_ITEM* mi = malloc(sizeof(MUC_ITEM));
     mi->conf_jid = malloc(strlen(par->room_name)*2+strlen(par->room_nick)*2+2);
     sprintf(mi->conf_jid, "%s/%s", par->room_name, par->room_nick);
@@ -1021,7 +1021,7 @@ void Enter_Conference(char *room, char *roomnick, char *roompass, char N_message
   }
   else
   {
-    // m_ex - текущий элемент
+    // m_ex - С‚РµРєСѓС‰РёР№ СЌР»РµРјРµРЅС‚
     int len = strlen(par->room_name)+strlen(par->room_nick)+2;
     m_ex->conf_jid = realloc(m_ex->conf_jid, len);
     snprintf(m_ex->conf_jid, len, "%s/%s", par->room_name, par->room_nick);
@@ -1067,7 +1067,7 @@ void _leaveconference(struct muc_hlp_data *ld)
 }
 
 /*
- * Функция для подготовки служебных структур перед отправкой в HELPER
+ * Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРѕРґРіРѕС‚РѕРІРєРё СЃР»СѓР¶РµР±РЅС‹С… СЃС‚СЂСѓРєС‚СѓСЂ РїРµСЂРµРґ РѕС‚РїСЂР°РІРєРѕР№ РІ HELPER
  */
 void Muc_Ctl(char *room, char *str, void(proc)(struct muc_hlp_data*))
 {
@@ -1109,14 +1109,14 @@ void _setconferencetopic(struct muc_hlp_data *ld)
   mfree(ld);
 }
 
-// Выходит из конференции
+// Р’С‹С…РѕРґРёС‚ РёР· РєРѕРЅС„РµСЂРµРЅС†РёРё
 void Send_Leave_Conference(char* room, char *reason)
 {
 
   Muc_Ctl(room, reason, _leaveconference);
 }
 
-// Задаёт тему базара
+// Р—Р°РґР°С‘С‚ С‚РµРјСѓ Р±Р°Р·Р°СЂР°
 void Set_Conference_Topic(char *room, char* topic)
 {
 
@@ -1125,7 +1125,7 @@ void Set_Conference_Topic(char *room, char* topic)
 
 void Leave_Conference(char* room)
 {
-  // Ищем экземпляр контакта в списке для конференций
+  // РС‰РµРј СЌРєР·РµРјРїР»СЏСЂ РєРѕРЅС‚Р°РєС‚Р° РІ СЃРїРёСЃРєРµ РґР»СЏ РєРѕРЅС„РµСЂРµРЅС†РёР№
   MUC_ITEM* m_ex = CList_FindMUCByJID(room);
 
   MUC_ITEM* m_ex2 = muctop;
@@ -1140,7 +1140,7 @@ void Leave_Conference(char* room)
   {
     if(m_ex2->next==m_ex)
     {
-      m_ex2->next = m_ex->next;   // Выбиваем из цепочки
+      m_ex2->next = m_ex->next;   // Р’С‹Р±РёРІР°РµРј РёР· С†РµРїРѕС‡РєРё
       mfree(m_ex->conf_jid);
       mfree(m_ex);
       break;
@@ -1151,7 +1151,7 @@ void Leave_Conference(char* room)
 }
 
 
-// Уничтожить список комнат
+// РЈРЅРёС‡С‚РѕР¶РёС‚СЊ СЃРїРёСЃРѕРє РєРѕРјРЅР°С‚
 void MUCList_Destroy()
 {
   LockSched();
@@ -1172,21 +1172,21 @@ void MUCList_Destroy()
 
 
 
-// Для вызова таймером
+// Р”Р»СЏ РІС‹Р·РѕРІР° С‚Р°Р№РјРµСЂРѕРј
 void Send_Presence_MMIStub()
 {
   SUBPROC((void*)Send_Initial_Presence_Helper);
 }
 
 
-// Изменяет имя контакта в ростере
+// РР·РјРµРЅСЏРµС‚ РёРјСЏ РєРѕРЅС‚Р°РєС‚Р° РІ СЂРѕСЃС‚РµСЂРµ
 void ChangeRoster(XMLNode* items)
 {
   XMLNode* rostEx = items;
   CLIST* Cont_Ex;
   char *name;
   char* w_subscr;
-  char aname[]="jid";  // Затрахали Tool Internal Error
+  char aname[]="jid";  // Р—Р°С‚СЂР°С…Р°Р»Рё Tool Internal Error
   char asub[]="subscribe";
   char aask[]="ask";
   char* jid;
@@ -1221,7 +1221,7 @@ void ChangeRoster(XMLNode* items)
       CList_ChangeContactParams(Cont_Ex,name,r_subscr, w_subscr_flag,gr_id);
     }
     else
-    { //если контакта нету надо добавить его в контактлист.
+    { //РµСЃР»Рё РєРѕРЅС‚Р°РєС‚Р° РЅРµС‚Сѓ РЅР°РґРѕ РґРѕР±Р°РІРёС‚СЊ РµРіРѕ РІ РєРѕРЅС‚Р°РєС‚Р»РёСЃС‚.
      CList_AddContact(jid, name,r_subscr, w_subscr_flag, gr_id);
     }
     rostEx=rostEx->next;
@@ -1248,7 +1248,7 @@ void FillRoster(XMLNode* items)
     {
       w_subscr_flag = 0;
     }
-    // Получаем группу контакта, заносим в список групп
+    // РџРѕР»СѓС‡Р°РµРј РіСЂСѓРїРїСѓ РєРѕРЅС‚Р°РєС‚Р°, Р·Р°РЅРѕСЃРёРј РІ СЃРїРёСЃРѕРє РіСЂСѓРїРї
     XMLNode *group = XML_Get_Child_Node_By_Name(rostEx, "group");
     int gr_id;
     if(group)
@@ -1272,39 +1272,39 @@ void FillRoster(XMLNode* items)
    i++;
   }
 
-  // Получение ростера закончено. Размечаем группы
+  // РџРѕР»СѓС‡РµРЅРёРµ СЂРѕСЃС‚РµСЂР° Р·Р°РєРѕРЅС‡РµРЅРѕ. Р Р°Р·РјРµС‡Р°РµРј РіСЂСѓРїРїС‹
   GR_ITEM *tmp_gpointer=GR_ROOT;
   CLIST *tmp_cpointer=cltop;
-  int cur_gid=-1, this_grid;   // Текущий обрабатываемый GID
+  int cur_gid=-1, this_grid;   // РўРµРєСѓС‰РёР№ РѕР±СЂР°Р±Р°С‚С‹РІР°РµРјС‹Р№ GID
 
 
-  // Цикл по всем контактам
+  // Р¦РёРєР» РїРѕ РІСЃРµРј РєРѕРЅС‚Р°РєС‚Р°Рј
   while(tmp_cpointer->next)
   {
     this_grid = ((CLIST*)tmp_cpointer->next)->group;
-    // Получаем текущую группу
+    // РџРѕР»СѓС‡Р°РµРј С‚РµРєСѓС‰СѓСЋ РіСЂСѓРїРїСѓ
     if(cur_gid!=this_grid)
     {
       tmp_gpointer = GetGroupByID(this_grid);
       cur_gid = this_grid;
-      // Создаём псевдоконтакт, вставляем его
+      // РЎРѕР·РґР°С‘Рј РїСЃРµРІРґРѕРєРѕРЅС‚Р°РєС‚, РІСЃС‚Р°РІР»СЏРµРј РµРіРѕ
       CLIST *gr_pscontact = malloc(sizeof(CLIST));
       gr_pscontact->name = malloc(strlen(tmp_gpointer->name)+1);
       gr_pscontact->JID = malloc(strlen(tmp_gpointer->name)+2+(strlen(My_JID_full)));
       strcpy(gr_pscontact->name, tmp_gpointer->name);
       strcpy(gr_pscontact->JID, tmp_gpointer->name);
-      strcat(gr_pscontact->JID, "@"); //присвоим группе несущемтвуюший JID, чтоб не сбивала с толку.
-      strcat(gr_pscontact->JID, My_JID_full);//но ресурс и контакт должны совпадать
+      strcat(gr_pscontact->JID, "@"); //РїСЂРёСЃРІРѕРёРј РіСЂСѓРїРїРµ РЅРµСЃСѓС‰РµРјС‚РІСѓСЋС€РёР№ JID, С‡С‚РѕР± РЅРµ СЃР±РёРІР°Р»Р° СЃ С‚РѕР»РєСѓ.
+      strcat(gr_pscontact->JID, My_JID_full);//РЅРѕ СЂРµСЃСѓСЂСЃ Рё РєРѕРЅС‚Р°РєС‚ РґРѕР»Р¶РЅС‹ СЃРѕРІРїР°РґР°С‚СЊ
       gr_pscontact->subscription = SUB_BOTH;
       gr_pscontact->wants_subscription = 0;
       gr_pscontact->group = cur_gid;
       gr_pscontact->IsVisible = 1;
       gr_pscontact->ResourceCount=1;
-      gr_pscontact->next=tmp_cpointer->next;  // Вставляем между текущим и следующим
-      gr_pscontact->vcard=NULL; //У группы нет vCard. И никогда не будет.
+      gr_pscontact->next=tmp_cpointer->next;  // Р’СЃС‚Р°РІР»СЏРµРј РјРµР¶РґСѓ С‚РµРєСѓС‰РёРј Рё СЃР»РµРґСѓСЋС‰РёРј
+      gr_pscontact->vcard=NULL; //РЈ РіСЂСѓРїРїС‹ РЅРµС‚ vCard. Р РЅРёРєРѕРіРґР° РЅРµ Р±СѓРґРµС‚.
       tmp_cpointer->next = gr_pscontact;
 
-      // Cоздаём ещё и псевдоресурс
+      // CРѕР·РґР°С‘Рј РµС‰С‘ Рё РїСЃРµРІРґРѕСЂРµСЃСѓСЂСЃ
       TRESOURCE* ResEx = malloc(sizeof(TRESOURCE));
       ResEx->vcard = NULL;
       ResEx->log=NULL;
@@ -1320,7 +1320,7 @@ void FillRoster(XMLNode* items)
       strcpy(ResEx->full_name, tmp_gpointer->name);
       strcat(ResEx->full_name, "@");
       strcat(ResEx->full_name, My_JID_full);
-      // Коннектим ресурс к группе
+      // РљРѕРЅРЅРµРєС‚РёРј СЂРµСЃСѓСЂСЃ Рє РіСЂСѓРїРїРµ
       gr_pscontact->res_list = ResEx;
       NContacts++;
       tmp_cpointer = tmp_cpointer->next;
@@ -1384,7 +1384,7 @@ void Send_Service_Unavailable(char *to, char *id)
 }
 
 /*
- Обработка входящих Iq-запросов
+ РћР±СЂР°Р±РѕС‚РєР° РІС…РѕРґСЏС‰РёС… Iq-Р·Р°РїСЂРѕСЃРѕРІ
 */
 void Process_Iq_Request(XMLNode* nodeEx)
 {
@@ -1402,7 +1402,7 @@ void Process_Iq_Request(XMLNode* nodeEx)
   from = XML_Get_Attr_Value("from",nodeEx->attr);
   id = XML_Get_Attr_Value("id",nodeEx->attr);
 
-// Проверяем наличие обязательных атрибутов
+// РџСЂРѕРІРµСЂСЏРµРј РЅР°Р»РёС‡РёРµ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹С… Р°С‚СЂРёР±СѓС‚РѕРІ
 if(!iqtype) return;
 
 if(!strcmp(gget,iqtype)) // Iq type = get
@@ -1412,14 +1412,14 @@ if(!strcmp(gget,iqtype)) // Iq type = get
   if(query = XML_Get_Child_Node_By_Name(nodeEx, "query"))
   if(q_type = XML_Get_Attr_Value("xmlns", query->attr))
   {
-  // Тут мы знаем XMLNS поступившего запроса
+  // РўСѓС‚ РјС‹ Р·РЅР°РµРј XMLNS РїРѕСЃС‚СѓРїРёРІС€РµРіРѕ Р·Р°РїСЂРѕСЃР°
   if(!strcmp(q_type,iq_version))
   {
     // jabber:iq:version
     if(from)
     {
-        // Создаем переменные, чтобы в них записать данные
-        // и безопасно уничтожить в HELPER
+        // РЎРѕР·РґР°РµРј РїРµСЂРµРјРµРЅРЅС‹Рµ, С‡С‚РѕР±С‹ РІ РЅРёС… Р·Р°РїРёСЃР°С‚СЊ РґР°РЅРЅС‹Рµ
+        // Рё Р±РµР·РѕРїР°СЃРЅРѕ СѓРЅРёС‡С‚РѕР¶РёС‚СЊ РІ HELPER
 
       char* loc_id = NULL;
       if(id)
@@ -1439,8 +1439,8 @@ if(!strcmp(gget,iqtype)) // Iq type = get
     // jabber:iq:time
     if(from)
     {
-        // Создаем переменные, чтобы в них записать данные
-        // и безопасно уничтожить в HELPER
+        // РЎРѕР·РґР°РµРј РїРµСЂРµРјРµРЅРЅС‹Рµ, С‡С‚РѕР±С‹ РІ РЅРёС… Р·Р°РїРёСЃР°С‚СЊ РґР°РЅРЅС‹Рµ
+        // Рё Р±РµР·РѕРїР°СЃРЅРѕ СѓРЅРёС‡С‚РѕР¶РёС‚СЊ РІ HELPER
 
       char* loc_id = NULL;
       if(id)
@@ -1478,8 +1478,8 @@ if(!strcmp(gget,iqtype)) // Iq type = get
     // http://jabber.org/protocol/disco#info
     if(from)
     {
-        // Создаем переменные, чтобы в них записать данные
-        // и безопасно уничтожить в HELPER
+        // РЎРѕР·РґР°РµРј РїРµСЂРµРјРµРЅРЅС‹Рµ, С‡С‚РѕР±С‹ РІ РЅРёС… Р·Р°РїРёСЃР°С‚СЊ РґР°РЅРЅС‹Рµ
+        // Рё Р±РµР·РѕРїР°СЃРЅРѕ СѓРЅРёС‡С‚РѕР¶РёС‚СЊ РІ HELPER
 
       char* loc_id = NULL;
       if(id)
@@ -1514,12 +1514,12 @@ if(!strcmp(gget,iqtype)) // Iq type = get
     }
   } //end ping
 
-  // Ни один обработчик не подошёл, отправляем ошибку.
+  // РќРё РѕРґРёРЅ РѕР±СЂР°Р±РѕС‚С‡РёРє РЅРµ РїРѕРґРѕС€С‘Р», РѕС‚РїСЂР°РІР»СЏРµРј РѕС€РёР±РєСѓ.
   Send_Feature_Not_Implemented(from, id);
 }
 
 
-// Обработка  Iq type = result
+// РћР±СЂР°Р±РѕС‚РєР°  Iq type = result
 if(!strcmp(gres,iqtype))
 {
   char bind_id[]="SieJC_bind_req";
@@ -1533,7 +1533,7 @@ if(!strcmp(gres,iqtype))
     return;
   }
 
-  if(!strcmp(id,auth_id) || !strcmp(id, sess_id))   // Авторизация либо конец инициализации сессии
+  if(!strcmp(id,auth_id) || !strcmp(id, sess_id))   // РђРІС‚РѕСЂРёР·Р°С†РёСЏ Р»РёР±Рѕ РєРѕРЅРµС† РёРЅРёС†РёР°Р»РёР·Р°С†РёРё СЃРµСЃСЃРёРё
   {
     Jabber_state = JS_AUTH_OK;
     if(!cltop)
@@ -1545,7 +1545,7 @@ if(!strcmp(gres,iqtype))
     return;
   }
 
-  if(!strcmp(id,rost_id))   // Запрос ростера
+  if(!strcmp(id,rost_id))   // Р—Р°РїСЂРѕСЃ СЂРѕСЃС‚РµСЂР°
   {
     XMLNode* query;
     if(!(query = XML_Get_Child_Node_By_Name(nodeEx, "query")))return;
@@ -1555,14 +1555,14 @@ if(!strcmp(gres,iqtype))
     {
       // jabber:iq:roster
       FillRoster(query->subnode);
-        // Через секунду запросим презенсы
+        // Р§РµСЂРµР· СЃРµРєСѓРЅРґСѓ Р·Р°РїСЂРѕСЃРёРј РїСЂРµР·РµРЅСЃС‹
       extern GBSTMR TMR_Send_Presence;
       GBS_StartTimerProc(&TMR_Send_Presence, TMR_SECOND*1, Send_Presence_MMIStub);
       return;
     }
   }
 
-  if(!strcmp(id,vreq_id))   // Запрос версии (ответ)
+  if(!strcmp(id,vreq_id))   // Р—Р°РїСЂРѕСЃ РІРµСЂСЃРёРё (РѕС‚РІРµС‚)
   {
     XMLNode* query;
     if(!(query = XML_Get_Child_Node_By_Name(nodeEx, "query")))return;
@@ -1583,7 +1583,7 @@ if(!strcmp(gres,iqtype))
       {
         vers_os_str=no_os;
       }
-      //Формируем сообщение
+      //Р¤РѕСЂРјРёСЂСѓРµРј СЃРѕРѕР±С‰РµРЅРёРµ
       char *reply=malloc(512);
       snprintf(reply, 512,LG_VERINFO,cl_name->value, cl_version->value, vers_os_str);
       CList_AddMessage(from, MSG_SYSTEM, reply);
@@ -1592,7 +1592,7 @@ if(!strcmp(gres,iqtype))
     }
   }
 
-    if(!strcmp(id,lastact_id))   // Запрос IDLE (ответ)
+    if(!strcmp(id,lastact_id))   // Р—Р°РїСЂРѕСЃ IDLE (РѕС‚РІРµС‚)
   {
     XMLNode* query;
     if(!(query = XML_Get_Child_Node_By_Name(nodeEx, "query")))return;
@@ -1601,7 +1601,7 @@ if(!strcmp(gres,iqtype))
     if(!strcmp(q_type,IQ_IDLE))
     {
       char *cl_sec=XML_Get_Attr_Value("seconds", query->attr);
-      //Формируем сообщение
+      //Р¤РѕСЂРјРёСЂСѓРµРј СЃРѕРѕР±С‰РµРЅРёРµ
       char *reply=malloc(512);
       unsigned int nsec, nmin, nhr, nd;
       extern const char percent_d[];
@@ -1619,7 +1619,7 @@ if(!strcmp(gres,iqtype))
     }
   }//end lastactiv
 
-    if(!strcmp(id,treq_id))   // Запрос TIME (ответ)
+    if(!strcmp(id,treq_id))   // Р—Р°РїСЂРѕСЃ TIME (РѕС‚РІРµС‚)
   {
     XMLNode* query;
     if(!(query = XML_Get_Child_Node_By_Name(nodeEx, "query")))return;
@@ -1649,7 +1649,7 @@ if(!strcmp(gres,iqtype))
       {
         tz_str=no_display;
       }
-      //Формируем сообщение
+      //Р¤РѕСЂРјРёСЂСѓРµРј СЃРѕРѕР±С‰РµРЅРёРµ
       char *reply=malloc(512);
       snprintf(reply, 512,LG_TIMEINFO,cl_utc->value, tz_str, display_str);
       CList_AddMessage(from, MSG_SYSTEM, reply);
@@ -1657,7 +1657,7 @@ if(!strcmp(gres,iqtype))
       return;
     }
   }
-  if(!strcmp(id,vcreq_id))   // Запрос vcard (ответ)
+  if(!strcmp(id,vcreq_id))   // Р—Р°РїСЂРѕСЃ vcard (РѕС‚РІРµС‚)
   {
     XMLNode* vcard;
     if(!(vcard = XML_Get_Child_Node_By_Name(nodeEx, "vCard")))return;
@@ -1666,7 +1666,7 @@ if(!strcmp(gres,iqtype))
     if(!strcmp(v_type,JABBER_VCARD_TEMP))Process_vCard(from, vcard);
   }
 /////////////////
-  if(!strcmp(id,disco_id))   // Запрос диско (ответ)
+  if(!strcmp(id,disco_id))   // Р—Р°РїСЂРѕСЃ РґРёСЃРєРѕ (РѕС‚РІРµС‚)
   {
     XMLNode* query;
     if(!(query = XML_Get_Child_Node_By_Name(nodeEx, "query")))return;
@@ -1695,7 +1695,7 @@ if(!strcmp(gres,iqtype))
     }
   }
 }
-// Обработка  Iq type = set
+// РћР±СЂР°Р±РѕС‚РєР°  Iq type = set
 if(!strcmp(gset,iqtype))
 {
     XMLNode* query;
@@ -1717,7 +1717,7 @@ if(!strcmp(gset,iqtype))
 if(!strcmp(gerr,iqtype)) // Iq type = error
 {
 
-  // Анализируем ошибку
+  // РђРЅР°Р»РёР·РёСЂСѓРµРј РѕС€РёР±РєСѓ
   XMLNode* error = XML_Get_Child_Node_By_Name(nodeEx, "error");
   if(!error)return;
   char* errcode = XML_Get_Attr_Value("code", error->attr);
@@ -1763,11 +1763,11 @@ if(!strcmp(gerr,iqtype)) // Iq type = error
 }
 }
 /*
-Презенсы :)
+РџСЂРµР·РµРЅСЃС‹ :)
 */
 void Process_Presence_Change(XMLNode* node)
  {
-  // Иар заебал
+  // РР°СЂ Р·Р°РµР±Р°Р»
    extern const char percent_d[];
    extern const int SHOWSTAT_MUCINOUT;
    extern const int SHOWSTAT_MUCCHANGESTAT;
@@ -1815,17 +1815,17 @@ int priority = 0;
      sscanf(prio_node->value,percent_d,&priority);
   }
 
-   // Предусматриваем случай, что послано нам что-то от конференции. Это важно.
+   // РџСЂРµРґСѓСЃРјР°С‚СЂРёРІР°РµРј СЃР»СѓС‡Р°Р№, С‡С‚Рѕ РїРѕСЃР»Р°РЅРѕ РЅР°Рј С‡С‚Рѕ-С‚Рѕ РѕС‚ РєРѕРЅС„РµСЂРµРЅС†РёРё. Р­С‚Рѕ РІР°Р¶РЅРѕ.
    XMLNode *x_node;
 
-    if(x_node = XML_Get_Child_Node_By_Name_And_Attr(node,loc_x, loc_xmlns, XMLNS_MUC)) // Послано от конференции
+    if(x_node = XML_Get_Child_Node_By_Name_And_Attr(node,loc_x, loc_xmlns, XMLNS_MUC)) // РџРѕСЃР»Р°РЅРѕ РѕС‚ РєРѕРЅС„РµСЂРµРЅС†РёРё
     {
       CLIST* Conference = CList_FindContactByJID(from);
-      // Получаем дочерний узел error (ибо нацелены на обработку именно ошибок)
+      // РџРѕР»СѓС‡Р°РµРј РґРѕС‡РµСЂРЅРёР№ СѓР·РµР» error (РёР±Рѕ РЅР°С†РµР»РµРЅС‹ РЅР° РѕР±СЂР°Р±РѕС‚РєСѓ РёРјРµРЅРЅРѕ РѕС€РёР±РѕРє)
       XMLNode* err_node = XML_Get_Child_Node_By_Name(node,"error");
-      if(err_node)  // Есть ошибка!
+      if(err_node)  // Р•СЃС‚СЊ РѕС€РёР±РєР°!
       {
-        // Хочу текст ошибки
+        // РҐРѕС‡Сѓ С‚РµРєСЃС‚ РѕС€РёР±РєРё
         XMLNode* err_desc = XML_Get_Child_Node_By_Name(err_node,"text");
         if(err_desc)
         {
@@ -1850,25 +1850,25 @@ int priority = 0;
 
 
 #define MAX_STATUS_LEN 512
-static char r[MAX_STATUS_LEN];       // Статик, чтобы не убило её при завершении процедуры
+static char r[MAX_STATUS_LEN];       // РЎС‚Р°С‚РёРє, С‡С‚РѕР±С‹ РЅРµ СѓР±РёР»Рѕ РµС‘ РїСЂРё Р·Р°РІРµСЂС€РµРЅРёРё РїСЂРѕС†РµРґСѓСЂС‹
 
-    if(x_node = XML_Get_Child_Node_By_Name_And_Attr(node,loc_x, loc_xmlns, XMLNS_MUC_USER)) // Послано от конференции в пользователя
+    if(x_node = XML_Get_Child_Node_By_Name_And_Attr(node,loc_x, loc_xmlns, XMLNS_MUC_USER)) // РџРѕСЃР»Р°РЅРѕ РѕС‚ РєРѕРЅС„РµСЂРµРЅС†РёРё РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     {
 
-      // Получим экземпляр конфы, в которой всё происходит
+      // РџРѕР»СѓС‡РёРј СЌРєР·РµРјРїР»СЏСЂ РєРѕРЅС„С‹, РІ РєРѕС‚РѕСЂРѕР№ РІСЃС‘ РїСЂРѕРёСЃС…РѕРґРёС‚
       CLIST* Conference = CList_FindContactByJID(from);
       if(!Conference)
       {
         return;
       }
       MUC_ITEM *MucClist = CList_FindMUCByJID(Conference->JID);
-      if (!MucClist) return; //нету такой конференции, значит мы ёё несоздавали
+      if (!MucClist) return; //РЅРµС‚Сѓ С‚Р°РєРѕР№ РєРѕРЅС„РµСЂРµРЅС†РёРё, Р·РЅР°С‡РёС‚ РјС‹ С‘С‘ РЅРµСЃРѕР·РґР°РІР°Р»Рё
       char* nick = Get_Resource_Name_By_FullJID(from);
 
-      // Тут можно обрабатывать события входа/выхода в конфу
-      // Ибо сообщается, кто вошёл (модер ли, админ...)
+      // РўСѓС‚ РјРѕР¶РЅРѕ РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊ СЃРѕР±С‹С‚РёСЏ РІС…РѕРґР°/РІС‹С…РѕРґР° РІ РєРѕРЅС„Сѓ
+      // РР±Рѕ СЃРѕРѕР±С‰Р°РµС‚СЃСЏ, РєС‚Рѕ РІРѕС€С‘Р» (РјРѕРґРµСЂ Р»Рё, Р°РґРјРёРЅ...)
       XMLNode* item = XML_Get_Child_Node_By_Name(x_node,"item");
-      if(status!=PRESENCE_OFFLINE) // Вход с любым статусом
+      if(status!=PRESENCE_OFFLINE) // Р’С…РѕРґ СЃ Р»СЋР±С‹Рј СЃС‚Р°С‚СѓСЃРѕРј
       {
         TRESOURCE* ResEx = CList_IsResourceInList(from);
         char* affiliation = XML_Get_Attr_Value("affiliation", item->attr);
@@ -1899,7 +1899,7 @@ static char r[MAX_STATUS_LEN];       // Статик, чтобы не убило её при завершении
             }
           }
         }
-        else if(real_jid)  //если знаем реальный jid, выводим его
+        else if(real_jid)  //РµСЃР»Рё Р·РЅР°РµРј СЂРµР°Р»СЊРЅС‹Р№ jid, РІС‹РІРѕРґРёРј РµРіРѕ
         {
           sprintf(r, "%s (%s) joined as %s and %s", nick, real_jid, affiliation, role);
           Req_Set_Role = 1;
@@ -1926,7 +1926,7 @@ static char r[MAX_STATUS_LEN];       // Статик, чтобы не убило её при завершении
         };
 
         char* my_nick = Get_Resource_Name_By_FullJID(MucClist->conf_jid);
-        if ((!strcmp(nick,my_nick))&&(Conference->res_list->status==PRESENCE_OFFLINE)) //если ето мы, входим в нее.
+        if ((!strcmp(nick,my_nick))&&(Conference->res_list->status==PRESENCE_OFFLINE)) //РµСЃР»Рё РµС‚Рѕ РјС‹, РІС…РѕРґРёРј РІ РЅРµРµ.
         {
           Conference->res_list->status=PRESENCE_ONLINE;
           ShowMSG(1,(int)LG_MUCCROK);
@@ -1936,7 +1936,7 @@ static char r[MAX_STATUS_LEN];       // Статик, чтобы не убило её при завершении
       }
 
 
-      if(status==PRESENCE_OFFLINE) // Выход
+      if(status==PRESENCE_OFFLINE) // Р’С‹С…РѕРґ
       {
         XMLNode* statusmsg_node = XML_Get_Child_Node_By_Name(node,"status");
         if (!statusmsg_node)
@@ -1948,7 +1948,7 @@ static char r[MAX_STATUS_LEN];       // Статик, чтобы не убило её при завершении
         }
 
         char* my_nick = Get_Resource_Name_By_FullJID(MucClist->conf_jid);
-        if (!strcmp(nick,my_nick)) //если ето мы, удаляем конфу.
+        if (!strcmp(nick,my_nick)) //РµСЃР»Рё РµС‚Рѕ РјС‹, СѓРґР°Р»СЏРµРј РєРѕРЅС„Сѓ.
         {
           Leave_Conference(Conference->JID);
           CList_MakeAllResourcesOFFLINE(Conference);
@@ -1963,33 +1963,33 @@ static char r[MAX_STATUS_LEN];       // Статик, чтобы не убило её при завершении
         Req_Set_Role = 1;
       }
 
-      // Получаем дочерний узел статуса
+      // РџРѕР»СѓС‡Р°РµРј РґРѕС‡РµСЂРЅРёР№ СѓР·РµР» СЃС‚Р°С‚СѓСЃР°
       XMLNode* sstatus = XML_Get_Child_Node_By_Name(x_node,"status");
-      if(sstatus)  // Есть статус!
+      if(sstatus)  // Р•СЃС‚СЊ СЃС‚Р°С‚СѓСЃ!
       {
-        // Получаем код статуса
+        // РџРѕР»СѓС‡Р°РµРј РєРѕРґ СЃС‚Р°С‚СѓСЃР°
         char* st_code=XML_Get_Attr_Value("code", sstatus->attr);
         int errcode_n=0;
         extern const char percent_d[];
         sscanf(st_code,percent_d,&errcode_n);
-        // Разные коды статусов - разное варенье:)
+        // Р Р°Р·РЅС‹Рµ РєРѕРґС‹ СЃС‚Р°С‚СѓСЃРѕРІ - СЂР°Р·РЅРѕРµ РІР°СЂРµРЅСЊРµ:)
         switch (errcode_n)
         {
-         case MUCST_KICKED:  sprintf(r, LG_MUCST_R_KICK,nick); break; // Сообщение о кике
-         case MUCST_BANNED: sprintf(r, LG_MUCST_R_BAN, nick); break;// Сообщение о бане
-         case MUCST_KICKED_MEMB_ONLY: sprintf(r, LG_MUCST_R_KICK_MEMB_ONLY, nick); break; // Сообщение о кике из мембер-онли румы
-         case MUCST_CHNICK: sprintf(r, LG_MUCST_R_CHNICK, nick,  XML_Get_Attr_Value("nick", item->attr)); break; // Сообщение о смене ника
-         case MUCST_MUCCREATED: sprintf(r, LG_MUCST_MUCCREATED, nick); break; // Сообщение о бане
-         case MUCST_MY_PRESENCE: break; // С этим нечего делать
+         case MUCST_KICKED:  sprintf(r, LG_MUCST_R_KICK,nick); break; // РЎРѕРѕР±С‰РµРЅРёРµ Рѕ РєРёРєРµ
+         case MUCST_BANNED: sprintf(r, LG_MUCST_R_BAN, nick); break;// РЎРѕРѕР±С‰РµРЅРёРµ Рѕ Р±Р°РЅРµ
+         case MUCST_KICKED_MEMB_ONLY: sprintf(r, LG_MUCST_R_KICK_MEMB_ONLY, nick); break; // РЎРѕРѕР±С‰РµРЅРёРµ Рѕ РєРёРєРµ РёР· РјРµРјР±РµСЂ-РѕРЅР»Рё СЂСѓРјС‹
+         case MUCST_CHNICK: sprintf(r, LG_MUCST_R_CHNICK, nick,  XML_Get_Attr_Value("nick", item->attr)); break; // РЎРѕРѕР±С‰РµРЅРёРµ Рѕ СЃРјРµРЅРµ РЅРёРєР°
+         case MUCST_MUCCREATED: sprintf(r, LG_MUCST_MUCCREATED, nick); break; // РЎРѕРѕР±С‰РµРЅРёРµ Рѕ Р±Р°РЅРµ
+         case MUCST_MY_PRESENCE: break; // РЎ СЌС‚РёРј РЅРµС‡РµРіРѕ РґРµР»Р°С‚СЊ
          default: sprintf(r,"%s - [unknow action(%s)]",nick, st_code);
         }
         XMLNode* item = XML_Get_Child_Node_By_Name(x_node,"item");
         if(item)
         {
-          XMLNode* actor = XML_Get_Child_Node_By_Name(item,loc_actor); // Вдруг сервис был настолько любезен, что соообщил исполнителя
+          XMLNode* actor = XML_Get_Child_Node_By_Name(item,loc_actor); // Р’РґСЂСѓРі СЃРµСЂРІРёСЃ Р±С‹Р» РЅР°СЃС‚РѕР»СЊРєРѕ Р»СЋР±РµР·РµРЅ, С‡С‚Рѕ СЃРѕРѕРѕР±С‰РёР» РёСЃРїРѕР»РЅРёС‚РµР»СЏ
           if(actor)strcat(r, XML_Get_Attr_Value(loc_jid, actor->attr));
 
-          XMLNode* reason = XML_Get_Child_Node_By_Name(item,loc_reason); // А вдруг нам даже сказали, за что?
+          XMLNode* reason = XML_Get_Child_Node_By_Name(item,loc_reason); // Рђ РІРґСЂСѓРі РЅР°Рј РґР°Р¶Рµ СЃРєР°Р·Р°Р»Рё, Р·Р° С‡С‚Рѕ?
           if(reason)
           {
             strcat(r, "; Reason: ");
@@ -2039,7 +2039,7 @@ void _mucadmincmd(char* room, XMLNode* iq_payload)
   mfree(room);
 }
 
-// Исполнение административных команд
+// РСЃРїРѕР»РЅРµРЅРёРµ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РёРІРЅС‹С… РєРѕРјР°РЅРґ
 void MUC_Admin_Command(char* room_name, char* room_jid, MUC_ADMIN cmd, char* reason)
 {
   char *_room_name=malloc(strlen(room_name)+1);
@@ -2145,7 +2145,7 @@ RECV:
 }
 
 /*
-Входящие сообщения
+Р’С…РѕРґСЏС‰РёРµ СЃРѕРѕР±С‰РµРЅРёСЏ
 */
 void Process_Incoming_Message(XMLNode* nodeEx)
 {
@@ -2154,7 +2154,7 @@ void Process_Incoming_Message(XMLNode* nodeEx)
   char c_xmlns[]="xmlns";
   char c_id[]="id";
   extern const int BOLD_NICK_INMUC;
-  // Если включено обслуживание запросов о получении...
+  // Р•СЃР»Рё РІРєР»СЋС‡РµРЅРѕ РѕР±СЃР»СѓР¶РёРІР°РЅРёРµ Р·Р°РїСЂРѕСЃРѕРІ Рѕ РїРѕР»СѓС‡РµРЅРёРё...
   char *chr_from = XML_Get_Attr_Value(from,nodeEx->attr);
     XMLNode* xnode = XML_Get_Child_Node_By_Name(nodeEx,"x");
     if(xnode)
@@ -2162,13 +2162,13 @@ void Process_Incoming_Message(XMLNode* nodeEx)
       char *xmlns = XML_Get_Attr_Value(c_xmlns,xnode->attr);
       if(xmlns)
       {
-      if(!strcmp(xmlns,XMLNS_MUC_USER)) //обработка invite
+      if(!strcmp(xmlns,XMLNS_MUC_USER)) //РѕР±СЂР°Р±РѕС‚РєР° invite
       {
        XMLNode *invite =  XML_Get_Child_Node_By_Name(xnode,"invite");
        if(invite)
        {
         MUC_ITEM* muct = CList_FindMUCByJID(chr_from); 
-        if(!muct) //если еще нетты такой конфы то добавим в список muctop, а вдруг зайдем
+        if(!muct) //РµСЃР»Рё РµС‰Рµ РЅРµС‚С‚С‹ С‚Р°РєРѕР№ РєРѕРЅС„С‹ С‚Рѕ РґРѕР±Р°РІРёРј РІ СЃРїРёСЃРѕРє muctop, Р° РІРґСЂСѓРі Р·Р°Р№РґРµРј
         {
           CList_AddContact(chr_from,chr_from, SUB_BOTH, 0, 129);
         }
@@ -2178,7 +2178,7 @@ void Process_Incoming_Message(XMLNode* nodeEx)
      }
     }
 
-  //обработка attention xep-0224
+  //РѕР±СЂР°Р±РѕС‚РєР° attention xep-0224
    XMLNode *attention =  XML_Get_Child_Node_By_Name(nodeEx,"attention");
    if(attention && USE_ATTENTION)
    {
@@ -2218,7 +2218,7 @@ void Process_Incoming_Message(XMLNode* nodeEx)
         if(Res_ex)
         if((Res_ex->entry_type == T_NORMAL)||(Res_ex->entry_type == T_CONF_NODE))
         {
-          //Пришло уведомление что наше сообщение получено, и как ето отобразить?
+          //РџСЂРёС€Р»Рѕ СѓРІРµРґРѕРјР»РµРЅРёРµ С‡С‚Рѕ РЅР°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ РїРѕР»СѓС‡РµРЅРѕ, Рё РєР°Рє РµС‚Рѕ РѕС‚РѕР±СЂР°Р·РёС‚СЊ?
           // ShowMSG(1,(int)Res_ex->name);
         }
       }
@@ -2263,7 +2263,7 @@ void Process_Incoming_Message(XMLNode* nodeEx)
     msgnode = msgsubject;
     Is_subj = 1;
   }
-  if(msgsubject && !msgerror) //если есть тема, обработаем...
+  if(msgsubject && !msgerror) //РµСЃР»Рё РµСЃС‚СЊ С‚РµРјР°, РѕР±СЂР°Р±РѕС‚Р°РµРј...
   {
     MUC_ITEM* TmpMUC = CList_FindMUCByJID(CList_FindContactByJID(chr_from)->JID);
       if(TmpMUC)
@@ -2287,7 +2287,7 @@ void Process_Incoming_Message(XMLNode* nodeEx)
   {
     MESS_TYPE msgtype = Get_Message_Type(XML_Get_Attr_Value("type",nodeEx->attr));
 
-    // Не показываем попапы для групчата, ибо достаёт трындец как
+    // РќРµ РїРѕРєР°Р·С‹РІР°РµРј РїРѕРїР°РїС‹ РґР»СЏ РіСЂСѓРїС‡Р°С‚Р°, РёР±Рѕ РґРѕСЃС‚Р°С‘С‚ С‚СЂС‹РЅРґРµС† РєР°Рє
     if((msgtype!=MSG_GCHAT)&&(msgtype!=MSG_NICKGCHAT))
     {
       if(DISPLAY_POPUPS)
@@ -2346,7 +2346,7 @@ void Process_Incoming_Message(XMLNode* nodeEx)
 }
 
 /*
-Получить внутренний номер данного типа присутствия по строке с присутсвием
+РџРѕР»СѓС‡РёС‚СЊ РІРЅСѓС‚СЂРµРЅРЅРёР№ РЅРѕРјРµСЂ РґР°РЅРЅРѕРіРѕ С‚РёРїР° РїСЂРёСЃСѓС‚СЃС‚РІРёСЏ РїРѕ СЃС‚СЂРѕРєРµ СЃ РїСЂРёСЃСѓС‚СЃРІРёРµРј
 */
 unsigned short GetPresenceIndex(char* presence_str)
 {
@@ -2359,7 +2359,7 @@ unsigned short GetPresenceIndex(char* presence_str)
 }
 
 /*
-Получить внутренний номер данного типа роли/полномочий по строке с присутсвием
+РџРѕР»СѓС‡РёС‚СЊ РІРЅСѓС‚СЂРµРЅРЅРёР№ РЅРѕРјРµСЂ РґР°РЅРЅРѕРіРѕ С‚РёРїР° СЂРѕР»Рё/РїРѕР»РЅРѕРјРѕС‡РёР№ РїРѕ СЃС‚СЂРѕРєРµ СЃ РїСЂРёСЃСѓС‚СЃРІРёРµРј
 */
 unsigned short GetAffRoleIndex(char* str)
 {

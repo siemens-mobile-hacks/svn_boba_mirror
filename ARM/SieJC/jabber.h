@@ -1,7 +1,6 @@
 /*
     SieNatJabber Project
-    ���������, ��������� ��������� XMPP
-
+    Константы, множества протокола XMPP
 */
 #ifndef _JABBER_H_
   #define _JABBER_H_
