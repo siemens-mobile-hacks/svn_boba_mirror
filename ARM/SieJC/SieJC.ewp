@@ -1357,7 +1357,7 @@
       <archiveVersion>1</archiveVersion>
       <data>
         <prebuild></prebuild>
-        <postbuild>"obexcopy.exe" $EXE_DIR$\SieJC.elf \MMCard\ZBin\SieJC\SieJC.elf</postbuild>
+        <postbuild></postbuild>
       </data>
     </settings>
     <settings>
@@ -2180,7 +2180,7 @@
       <archiveVersion>1</archiveVersion>
       <data>
         <prebuild></prebuild>
-        <postbuild>"obexcopy.exe" $EXE_DIR$\SieJC.elf \Data\ZBin\SieJC\SieJC.elf</postbuild>
+        <postbuild></postbuild>
       </data>
     </settings>
     <settings>
@@ -3004,7 +3004,7 @@
       <archiveVersion>1</archiveVersion>
       <data>
         <prebuild></prebuild>
-        <postbuild>"obexcopy.exe" $EXE_DIR$\SieJC.elf \MMCard\ZBin\SieJC\SieJC.elf</postbuild>
+        <postbuild></postbuild>
       </data>
     </settings>
     <settings>
@@ -3827,7 +3827,7 @@
       <archiveVersion>1</archiveVersion>
       <data>
         <prebuild></prebuild>
-        <postbuild>"obexcopy.exe" $EXE_DIR$\SieJC.elf \Data\ZBin\SieJC\SieJC.elf</postbuild>
+        <postbuild></postbuild>
       </data>
     </settings>
     <settings>
@@ -4651,7 +4651,7 @@
       <archiveVersion>1</archiveVersion>
       <data>
         <prebuild></prebuild>
-        <postbuild>"obexcopy.exe" $EXE_DIR$\SieJC.elf \MMCard\ZBin\SieJC\SieJC.elf</postbuild>
+        <postbuild></postbuild>
       </data>
     </settings>
     <settings>
@@ -5476,7 +5476,7 @@
       <archiveVersion>1</archiveVersion>
       <data>
         <prebuild></prebuild>
-        <postbuild>"obexcopy.exe" $EXE_DIR$\SieJC.elf \MMCard\ZBin\SieJC\SieJC.elf</postbuild>
+        <postbuild></postbuild>
       </data>
     </settings>
     <settings>
