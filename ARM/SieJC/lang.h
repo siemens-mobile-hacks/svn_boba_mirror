@@ -6,7 +6,7 @@
 #ifndef _LANG_H_
 #define _LANG_H_
 
-#define LG_COPYRIGHT "Siemens natJabber Client\n(c)Kibab, Ad, Borman99\n%s r%i\nCompiled %s"
+#define LG_COPYRIGHT "Siemens natJabber Client\n(c)Kibab, Ad, Borman99\n%s %s\nCompiled %s"
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //

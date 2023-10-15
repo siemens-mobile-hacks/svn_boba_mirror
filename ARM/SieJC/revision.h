@@ -1,1 +1,1 @@
-#define __SVN_REVISION__ 3006
+#define __GIT_REVISION__ "047bfb6e"

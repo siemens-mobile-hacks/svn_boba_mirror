@@ -49,7 +49,7 @@ void AboutDlg(void)
   char msg_tpl[]=LG_COPYRIGHT;
   int l;
   char *msg = malloc(l=strlen(msg_tpl)+20+1);
-  snprintf(msg,l,msg_tpl, VERSION_VERS, __SVN_REVISION__, __DATE__);
+  snprintf(msg,l,msg_tpl, VERSION_VERS, __GIT_REVISION__, __DATE__);
   ShowMSG(0,(int)msg);
   mfree(msg);
 };

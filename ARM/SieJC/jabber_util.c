@@ -374,13 +374,13 @@ void Send_LastActivity_Request(char *dest_jid)
 char *Generate_Caps()
 {
   char answer[400];
-  sprintf(answer, "client/mobile//SieJC %s:%i"
+  sprintf(answer, "client/mobile//SieJC %s:%s"
     "<%s"
     "<%s"
     "<%s"
     "<%s"
     "<%s"
-    "<%s", VERSION_VERS, __SVN_REVISION__, DISCO_INFO, XMLNS_MUC, IQ_IDLE, IQ_TIME, IQ_VERSION, JABBER_URN_PING);
+    "<%s", VERSION_VERS, __GIT_REVISION__, DISCO_INFO, XMLNS_MUC, IQ_IDLE, IQ_TIME, IQ_VERSION, JABBER_URN_PING);
       
   if(DELIVERY_EVENTS)
   {
@@ -424,7 +424,7 @@ void Send_Presence(PRESENCE_INFO *pr_info)
   extern char My_Presence;
   extern const char percent_d[];
   My_Presence = pr_info->status;
-  //<c xmlns='http://jabber.org/protocol/caps' node='VERSION_NAME' ver='VERSION_VERS __SVN_REVISION__' />
+  //<c xmlns='http://jabber.org/protocol/caps' node='VERSION_NAME' ver='VERSION_VERS __GIT_REVISION__' />
   // Генерируем капс исходя из включённых фич
   char *caps_str = Generate_Caps();
   char *tmp_str = malloc(256);
@@ -461,7 +461,7 @@ void Send_Presence(PRESENCE_INFO *pr_info)
     show = XML_CreateNode(show_t, (char*)PRESENCES[pr_info->status]);
     caps = XML_CreateNode(c_t, NULL);
     XML_Set_Attr_Value(caps, xmlns_t, XMLNS_CAPS);
-    sprintf(tmp_str, "%s %s-r%d", VERSION_NAME, VERSION_VERS, __SVN_REVISION__);
+    sprintf(tmp_str, "%s %s-%s", VERSION_NAME, VERSION_VERS, __GIT_REVISION__);
     XML_Set_Attr_Value(caps, node_t, tmp_str);
     XML_Set_Attr_Value(caps, ver_t, caps_str);
     XML_Set_Attr_Value(caps, hash_t, "sha-1");
@@ -494,7 +494,7 @@ void Send_Presence(PRESENCE_INFO *pr_info)
     }
     caps = XML_CreateNode(c_t, NULL);
     XML_Set_Attr_Value(caps, xmlns_t, XMLNS_CAPS);
-    sprintf(tmp_str, "%s %s-r%d", VERSION_NAME, VERSION_VERS, __SVN_REVISION__);
+    sprintf(tmp_str, "%s %s-%s", VERSION_NAME, VERSION_VERS, __GIT_REVISION__);
     XML_Set_Attr_Value(caps, node_t, tmp_str);
     XML_Set_Attr_Value(caps, ver_t, caps_str);
     XML_Set_Attr_Value(caps, hash_t, "sha-1");
@@ -675,7 +675,7 @@ void Report_VersionInfo(char* id, char *to)
   strcpy(answer, VERSION_NAME);
   xml_name = XML_CreateNode(name_t, answer);
   
-  sprintf(answer, "%s-r%d (%s)", VERSION_VERS, __SVN_REVISION__, CMP_DATE);
+  sprintf(answer, "%s-%s (%s)", VERSION_VERS, __GIT_REVISION__, CMP_DATE);
   xml_version = XML_CreateNode(version_t, answer);
   
   // Не будем издеваться над Костиным сервером)
