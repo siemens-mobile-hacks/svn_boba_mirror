@@ -25,6 +25,11 @@
 #define SEND_TIMER
 #endif
 
+// Использовать ли MD5-авторизация
+// В 2к23 не имеет смысла, т.к. все оставшиеся ICQ-сервера используют IServerd
+// А он умеет только в plain-text авторизацию
+#define USE_SECURE_AUTH 0
+
 GUI *deleting_contact;
 
 extern volatile int total_smiles;
@@ -1576,6 +1581,24 @@ void SendAnswer(int dummy, TPKT *p)
   sendq_p=NULL;
 }
 
+void send_login(int dummy, TPKT *p)
+{
+  connect_state=2;
+  char rev[16];
+  //Кто будет менять в этом месте идентификатор клиента, буду банить на уровне сервера!!!
+  //А Вова будет банить на форуме!
+  snprintf(rev,9,"Sie_%04d",__SVN_REVISION__);
+
+  TPKT *p2=malloc(sizeof(PKT)+8);
+  p2->pkt.uin=UIN;
+  p2->pkt.type=T_SETCLIENT_ID;
+  p2->pkt.data_len=8;
+  memcpy(p2->data,rev,8);
+  SendAnswer(0,p2);
+  SendAnswer(dummy,p);
+  RXstate=-(int)sizeof(PKT);
+}
+
 void do_ping(void)
 {
   TPKT *pingp=malloc(sizeof(PKT));
@@ -1654,8 +1677,10 @@ void get_answer(void)
 	ALLTOTALRECEIVED+=(i+8);			//by BoBa 10.07
 	//Пакет удачно принят, можно разбирать...
 	RXbuf.data[i]=0; //Конец строки
-        aa(&RXbuf);
-        switch(RXbuf.pkt.type)
+	if (USE_SECURE_AUTH) {
+	  aa(&RXbuf);
+	}
+	switch(RXbuf.pkt.type)
 	{
         case T_LOGIN:
 	  //Удачно залогинились
@@ -1760,7 +1785,9 @@ void get_answer(void)
 	  GBS_SendMessage(MMI_CEPID,MSG_HELPER_TRANSLATOR,0,p,sock);
 	  break;
 	}
-        ad(&RXbuf);
+	if (USE_SECURE_AUTH) {
+	  ad(&RXbuf);
+	}
 	i=-(int)sizeof(PKT); //А может еще есть данные
       }
     }
@@ -2832,7 +2859,11 @@ int maincsm_onmessage(CSM_RAM *data,GBS_MSG *msg)
 	      msg->pkt.type=T_RECVMSG;
 	      msg->pkt.data_len=l;
 	      memcpy(msg->data,fmp->msg,l+1);
-	      ae(msg);
+	      if (USE_SECURE_AUTH) {
+	        ae(msg);
+	      } else {
+	        ProcessPacket(msg);
+	      }
 	    }
 	    mfree(fmp->msg); //Освобождаем сам текст сообщения
 	    mfree(fmp->ipc); //Освобождаем родительский IPC_REQ
@@ -2934,7 +2965,11 @@ int maincsm_onmessage(CSM_RAM *data,GBS_MSG *msg)
 	else
 	{
 	  //Непосредственная обработка
-	  ae(p);
+	  if (USE_SECURE_AUTH) {
+	    ae(p);
+	  } else {
+	    ProcessPacket(p);
+	  }
 	}
 	return(0);
       }
@@ -2947,7 +2982,17 @@ int maincsm_onmessage(CSM_RAM *data,GBS_MSG *msg)
 	  //Соединение установленно, посылаем пакет login
 	  strcpy(logmsg, LG_GRTRYLOGIN);
 	  {
-	    SUBPROC((void *)ab,0,0);
+	    if (USE_SECURE_AUTH) {
+	      SUBPROC((void *)ab,0,0);
+	    } else {
+	      int i=strlen(PASS);
+	      TPKT *p=malloc(sizeof(PKT)+i);
+	      p->pkt.uin=UIN;
+	      p->pkt.type=T_REQLOGIN;
+	      p->pkt.data_len=i;
+	      memcpy(p->data,PASS,i);
+	      SUBPROC((void *)send_login,0,p);
+	    }
 	  }
 	  GROUP_CACHE=0;
 	  SENDMSGCOUNT=0; //Начинаем отсчет
