@@ -1587,7 +1587,7 @@ void send_login(int dummy, TPKT *p)
   char rev[16];
   //Кто будет менять в этом месте идентификатор клиента, буду банить на уровне сервера!!!
   //А Вова будет банить на форуме!
-  snprintf(rev,9,"Sie_%04d",__SVN_REVISION__);
+  snprintf(rev,9,"Sie_%s",__SVN_REVISION__);
 
   TPKT *p2=malloc(sizeof(PKT)+8);
   p2->pkt.uin=UIN;
